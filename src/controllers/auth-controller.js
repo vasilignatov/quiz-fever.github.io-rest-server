@@ -3,19 +3,19 @@ const userService = require('../services/user-service');
 const { COOKIE_NAME } = require('../constants');
 
 router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
+    const {  email,  password } = req.body;
 
     try {
         await userService.register({ username, email, password });
 
         let { user, token } = await userService.login({ username, password });
-
-        console.log(req.user);
         
         res.cookie(COOKIE_NAME, token);
+
         res.json({
-            sessionToken: token,
             objectId: user._id,
+            sessionToken: token,
+            username: user.username
         });
     } catch (err) {
         res.json({
@@ -32,12 +32,16 @@ router.post('/login', async (req, res) => {
         let { user, token } = await userService.login({ username, password });
 
         res.json({
-            _id: user._id,
             email: user.email,
-            authToken: token
+            objectId: user._id,
+            sessionToken: token,
+            username: user.username
         });
     } catch (error) {
-
+        res.json({
+            type: 'error',
+            message: 'Login error: ' + err
+        });
     }
 
 });
