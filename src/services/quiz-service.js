@@ -5,7 +5,7 @@ exports.create = (quizData) => Quiz.create(quizData);
 
 exports.getAll = () => Quiz.find({}).lean();
 
-exports.getQuiz = (objectId) => Quiz.findOne({ objectId });
+exports.getQuiz = (objectId) => Quiz.findOne({ objectId }).populate('owner', 'username');
 
 exports.updateQuiz = (objectId, newData) => Quiz.findOneAndUpdate({ objectId }, newData);
 
