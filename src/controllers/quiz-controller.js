@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const quizService = require('../services/quiz-service');
 
+
+// TODO: Add guard routes to ALL actions(authentication)
+
 // Get Quizes
 router.get('/Quiz', async (req, res) => {
     try {
