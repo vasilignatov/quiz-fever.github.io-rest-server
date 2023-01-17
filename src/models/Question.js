@@ -11,10 +11,13 @@ const questionSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    objectId: {
+        type: mongoose.Schema.Types.ObjectId
     }
 });
 
-quizSchema.pre('save', function () {
+questionSchema.pre('save', function () {
     this.objectId = this._id;
 });
 
