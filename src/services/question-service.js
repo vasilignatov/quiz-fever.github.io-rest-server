@@ -1,5 +1,12 @@
+const { query } = require('express');
 const Question = require('../models/Question');
 
-exports.create = (questionData) => Question.create(questionData);
+// CRUD
+exports.createQst = (questionData) => Question.create(questionData);
 
-// module.exports = () => Question.
+exports.updateQst = (quiestionId, data) => Question.findByIdAndUpdate(quiestionId, data);
+
+exports.deleteQst = (quiestionId, data) => Question.findByIdAndUpdate(quiestionId, data);
+
+exports.getQuestionsByQuizId = (quizId) => Question.find({_id: quizId}).lean();
+
