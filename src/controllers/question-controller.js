@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { json } = require('express');
 const questionService = require('../services/question-service');
 
 // Create Question
 router.post('/Question', async (req, res) => {
     try {
-        const question = await questionService.create(req.body);
+        const question = await questionService.createQst(req.body);
         console.log(question);
         res.json(question);
     } catch (error) {
@@ -14,16 +13,21 @@ router.post('/Question', async (req, res) => {
     }
 });
 
-// Create Question
-// router.post('/Question', (req, res) => {
-//     try {
-//         const question = await questionService.create(req.body);
-//         res.json(question);
-//     } catch (error) {
-//         console.log(error);
-//         res.json({ error });
-//     }
-// });
+// Get Questions By QuizId
+router.get('/Question', async (req, res) => {
+    console.log(req.query);
+    const { quiz, owner } = JSON.parse(req.query.where);
+    try {
+        if (quiz && owner) {
+            const questions = await questionService.getQuestionsByQuizId(quiz.objectId, owner.objectId);
+            return res.json(questions);
+        }
+        res.status(500);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json(error);
+    }
+});
 
 
 
