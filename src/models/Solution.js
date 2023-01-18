@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
 const solutionSchema = new mongoose.Schema({
-    objectId: {
-        typeof: mongoose.Schema.Types.ObjectId
-    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -12,11 +9,18 @@ const solutionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    total: Number,
-    correct: Number
+    total: {
+        type: Number
+    },
+    correct: {
+        type: Number,
+    },
+    objectId: {
+        type: mongoose.Schema.Types.ObjectId
+    },
 });
 
-solutionSchema.pre('save', function() {
+solutionSchema.pre('save', function () {
     this.objectId = this._id;
 });
 
