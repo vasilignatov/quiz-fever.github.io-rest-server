@@ -1,5 +1,5 @@
 const jwt = require('../utils/jwtUtils');
-const { COOKIE_NAME, JWT_SECRET } = require('../constants');
+const { JWT_SECRET } = require('../constants');
 
 exports.auth = async function (req, res, next) {
     let token = req.headers['x-parse-session-token'];
@@ -10,7 +10,7 @@ exports.auth = async function (req, res, next) {
             req.user = decoded;
             return next();
         } catch (error) {
-            res.status(401).json({ message: 'You are not authorized! (auth middleware)' });
+            res.status(401).json({ message: 'You are not authorized!' });
         }
     }
 

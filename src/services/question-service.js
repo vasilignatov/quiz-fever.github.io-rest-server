@@ -1,4 +1,3 @@
-const { query } = require('express');
 const Question = require('../models/Question');
 
 // CRUD

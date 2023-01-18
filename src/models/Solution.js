@@ -12,7 +12,8 @@ const solutionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    total: String
+    total: Number,
+    correct: Number
 });
 
 solutionSchema.pre('save', function() {

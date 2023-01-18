@@ -9,7 +9,7 @@ const quizSchema = new mongoose.Schema({
         ref: 'User'
     },
     objectId: {
-        type: mongoose.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId
     }
 });
 
