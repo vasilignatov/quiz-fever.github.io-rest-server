@@ -11,6 +11,8 @@ const quizSchema = new mongoose.Schema({
     objectId: {
         type: mongoose.Schema.Types.ObjectId
     }
+}, {
+    timestamps: { createdAt: true, updatedAt: false }
 });
 
 quizSchema.pre('save', function () {

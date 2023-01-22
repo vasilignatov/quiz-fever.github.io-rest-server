@@ -5,7 +5,6 @@ const questionService = require('../services/question-service');
 router.post('/Question', async (req, res) => {
     try {
         const question = await questionService.createQst(req.body);
-        console.log(question);
         res.json(question);
     } catch (error) {
         console.log(error);
@@ -15,7 +14,6 @@ router.post('/Question', async (req, res) => {
 
 // Get Questions By QuizId
 router.get('/Question', async (req, res) => {
-    console.log(req.query);
     const { quiz, owner } = JSON.parse(req.query.where);
     try {
         if (quiz && owner) {

@@ -6,6 +6,7 @@ const solutionService = require('../services/solution-service');
 router.get('/Solution', async (req, res) => {
     try {
         const owner = JSON.parse(req.query.where).owner;
+        console.log(owner);
         if (owner.className == '_User') {
             const result = await solutionService.getSolutionsByUserId(owner.objectId);
             res.json(result);
