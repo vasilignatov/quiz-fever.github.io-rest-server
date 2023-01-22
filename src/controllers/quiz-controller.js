@@ -11,8 +11,8 @@ router.get('/Quiz', async (req, res) => {
     try {
         if(query == 'createdAt') {
             const lastQuiz = await quizService.getMostRecent();
-            console.log(lastQuiz);
             res.json(lastQuiz);
+            // return array with most recent quiz
         } else {
             const quizes = await quizService.getAll();
             res.json(quizes);

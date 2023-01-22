@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const quizSchema = new mongoose.Schema({
     title: String,
     topic: String,
+    description: String,
     questionCount: Number,
     owner: {
         type: mongoose.Schema.Types.ObjectId,
