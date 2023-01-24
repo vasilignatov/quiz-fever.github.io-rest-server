@@ -7,7 +7,7 @@ const routes = require('../routes');
 
 function config(app) {
     app.use(express.json());
-    app.use(express.urlencoded({extended: true}));
+    app.use(express.urlencoded({ extended: true }));
     app.use(auth);
     app.use(cors());
     app.use(cookieParser());
