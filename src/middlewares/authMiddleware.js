@@ -16,3 +16,17 @@ exports.auth = async function (req, res, next) {
 
     next();
 }
+
+exports.isAuth = async function (req, res, next) {
+    if (req.user) {
+        return next();
+    }
+    res.status(401).json({ message: 'You are not authorized!' });
+}
+
+exports.isGuest = function (req, res, next) {
+    if(req.user) {
+        return next();
+    }
+    res.json({ok: true});
+}
