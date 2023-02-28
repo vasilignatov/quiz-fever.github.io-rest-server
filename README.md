@@ -14,4 +14,4 @@ Then, start the server with one step using:
 
 `npm start`
 
-The server is listening now on: http:localhost:3030.
+The server is listening now on: http://localhost:3030/.
