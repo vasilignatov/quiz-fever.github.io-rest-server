@@ -23,7 +23,21 @@ router.get('/Question', async (req, res) => {
         res.status(500);
     } catch (error) {
         console.log(error);
-        res.status(404).json(error);
+        res
+            .status(404)
+            .json(error);
+    }
+});
+
+
+router.put('/Question/:id', async (req, res) => {
+    try {
+        const updated = await questionService.updateQst(req.params.id, req.body);
+        console.log('updated: ', updated);
+        res
+            .json(updated)
+    } catch (error) {
+        res.json(error);
     }
 });
 

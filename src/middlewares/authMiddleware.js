@@ -10,7 +10,9 @@ exports.auth = async function (req, res, next) {
             req.user = decoded;
             return next();
         } catch (error) {
-            res.status(401).json({ message: 'You are not authorized!' });
+            res
+                .status(401)
+                .json({ message: 'You are not authorized!' });
         }
     }
 
@@ -25,8 +27,8 @@ exports.isAuth = async function (req, res, next) {
 }
 
 exports.isGuest = function (req, res, next) {
-    if(req.user) {
+    if (req.user) {
         return next();
     }
-    res.json({ok: true});
+    res.json({ ok: true });
 }
